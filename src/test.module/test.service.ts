@@ -1,16 +1,31 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { MYSQL_LOCALHOST_DATA_SOURCE } from 'src/database.module/database.providers';
 import { Repository } from 'typeorm';
+import { TestCollection } from './test.document';
 import { Test } from './test.entity';
 
 @Injectable()
 export class TestService {
   constructor(
-    @Inject(MYSQL_LOCALHOST_DATA_SOURCE)
-    private photoRepository: Repository<Test>,
+    @Inject('TEST_REPOSITORY')
+    private testRepository: Repository<Test>,
+    @Inject('TEST_COLLECTION_REPOSITORY')
+    private testMongoRepository: Repository<TestCollection>,
   ) {}
 
-  async findAll(): Promise<Test[]> {
-    return this.photoRepository.find();
+  async findAllTest(): Promise<Test[]> {
+    return this.testRepository.find();
   }
+
+  async findAllTestCollection(): Promise<TestCollection[]> {
+    return await this.testMongoRepository.find();
+  }
+
+  public async saveTestItem(test: Test): Promise<Test> {
+    return this.testRepository.save(test);
+  }
+
+  public async saveTestCollectionItem(testCollection: TestCollection): Promise<TestCollection> {
+    return this.testMongoRepository.save(testCollection);
+  }
+
 }
