@@ -1,7 +1,7 @@
 
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TestCollection } from 'src/test.module/test.document';
-import { Test } from 'src/test.module/test.entity';
+import { TestCollection } from 'src/test.module/mongo/test.document';
+import { Test } from 'src/test.module/mysql/test.entity';
 import { DataSource } from 'typeorm';
 
 export const MYSQL_LOCALHOST_DATA_SOURCE = 'MYSQL_LOCALHOST_DATA_SOURCE';
@@ -19,8 +19,7 @@ export const databaseProviders = [
         password: 'my-secret-pw',
         database: 'test',
         entities: [
-          // __dirname + '/../**/*.entity{.ts,.js}',
-          Test
+          __dirname + '/../**/mysql/*.entity{.ts,.js}'
         ], 
         synchronize: true
       });
@@ -38,8 +37,7 @@ export const databaseProviders = [
         // password: 'my-secret-pw',
         database: 'test',
         entities: [
-          // __dirname + '/../**/*.document{.ts,.js}',
-          TestCollection
+          __dirname + '/../**/mongo/*.document{.ts,.js}'
         ], 
         synchronize: true,
         useUnifiedTopology: true

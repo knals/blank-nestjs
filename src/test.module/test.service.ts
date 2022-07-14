@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { TestCollection } from './test.document';
-import { Test } from './test.entity';
+import { TestCollection } from './mongo/test.document';
+import { Test } from './mysql/test.entity';
 
 @Injectable()
 export class TestService {

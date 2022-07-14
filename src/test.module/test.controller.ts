@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Put } from '@nestjs/common';
-import { TestCollection } from './test.document';
-import { Test } from './test.entity';
+import { TestCollection } from './mongo/test.document';
+import { Test } from './mysql/test.entity';
 import { TestService } from './test.service';
 
 @Controller('test')

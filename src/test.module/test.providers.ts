@@ -1,7 +1,7 @@
 import { MONGO_LOCALHOST_DATA_SOURCE, MYSQL_LOCALHOST_DATA_SOURCE } from 'src/database.module/database.providers';
 import { DataSource } from 'typeorm';
-import { TestCollection } from './test.document';
-import { Test } from './test.entity';
+import { TestCollection } from './mongo/test.document';
+import { Test } from './mysql/test.entity';
 
 export const testRepositories = [
   {
