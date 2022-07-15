@@ -27,8 +27,6 @@
 The reason for this repository is learning about NestJs.
 
 
-docker pull mongo
-
 ## Prerequisites
 
 ```bash
@@ -45,7 +43,7 @@ docker run --name some-mongo -d mongo:tag
 
 # Keycloak (I suggest using docker for simplicity)
 docker pull jboss/keycloak
-docker run -p 8080:8080 jboss/keycloak
+docker run -p 8080:8080 -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> jboss/keycloak
 
 ```
 
@@ -54,8 +52,12 @@ docker run -p 8080:8080 jboss/keycloak
 ```bash
 # install dependencies
 $ npm install
+```
 
-# production enviroment properties
+## Enviroments
+
+```bash
+# production enviroment properties 
 NODE_ENV = 'PROD'
 ```
 
