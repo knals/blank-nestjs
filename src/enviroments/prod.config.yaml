@@ -1,21 +1,24 @@
 http:
   host: 'localhost'
   port: 3000
-
 db:
-  mysql:
-    type: 'mysql'
-    host: 'localhost'
-    port: 3306
-    username: 'root'
-    password: 'my-secret-pw'
-    database: 'test'
-    synchronize: false
   mongo:
     type: 'mongodb'
     host: 'localhost'
     port: 27017
     username: 'root'
+    password: 'example'
     database: 'test'
-    synchronize: false
+    synchronize: true
     useUnifiedTopology: true
+  mysql:
+    type: 'mysql'
+    host: 'localhost'
+    port: 8080
+    #username: 'root'
+    username: 'root'
+    #password: 'my-secret-pw'
+    password: 'example'
+    database: 'test'
+    synchronize: true
+

@@ -16,10 +16,10 @@ import { TestModule } from './test.module/test.module';
 @Module({
   imports: [
     KeycloakConnectModule.register({
-      authServerUrl: 'http://localhost:8180/auth',
+      authServerUrl: 'http://localhost:80/auth',
       realm: 'Master',
       clientId: 'Blank-nestjs',
-      secret: 'yC6fxy3yGjODVrhujHsMHmen5UbXha4f',
+      secret: 'NyPuoveHdW38n87AdDTWPGjWPwaL9n4Q',
       // Secret key of the client taken from keycloak server
     }),
     ConfigModule.forRoot({
