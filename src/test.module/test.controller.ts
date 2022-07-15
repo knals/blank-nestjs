@@ -9,7 +9,7 @@ import { TestService } from './test.service';
 export class TestController {
   constructor(
     private readonly testService: TestService,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
   ) {}
 
   @Get('/all-test')
@@ -21,7 +21,7 @@ export class TestController {
   @Get('all-test-collection')
   @Roles({ roles: ['user'] })
   getAllTestCollection(): Promise<TestCollection[]> {
-     return this.testService.findAllTestCollection();
+    return this.testService.findAllTestCollection();
   }
 
   @Get('enviroment')
@@ -29,28 +29,21 @@ export class TestController {
   getEnviromentProperty(): string {
     console.log(this.configService);
     console.log(`${process.env.NODE_ENV}`);
-
-/*     for (const key in process.env) {
-      if (Object.prototype.hasOwnProperty.call(process.env, key)) {
-        const element = process.env[key];
-        console.log(element);
-        
-      }
-    } */
     console.log(this.configService.get<string>('GREETING_MSG'));
-     return this.configService.get<string>('GREETING_MSG');
+    return this.configService.get<string>('GREETING_MSG');
   }
 
   @Post('/save/test')
   @Roles({ roles: ['admin'] })
   saveTest(@Body() test: Test): Promise<Test> {
-    return this.testService.saveTestItem(test) ;
+    return this.testService.saveTestItem(test);
   }
 
   @Post('/save/test-collection')
   @Roles({ roles: ['admin'] })
-  saveTestCollection(@Body() testCollection: TestCollection): Promise<TestCollection> {//  {
-     return  this.testService.saveTestCollectionItem(testCollection);
+  saveTestCollection(
+    @Body() testCollection: TestCollection,
+  ): Promise<TestCollection> {
+    return this.testService.saveTestCollectionItem(testCollection);
   }
-
 }

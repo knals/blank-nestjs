@@ -24,8 +24,9 @@ export class TestService {
     return this.testRepository.save(test);
   }
 
-  public async saveTestCollectionItem(testCollection: TestCollection): Promise<TestCollection> {
+  public async saveTestCollectionItem(
+    testCollection: TestCollection,
+  ): Promise<TestCollection> {
     return this.testMongoRepository.save(testCollection);
   }
-
 }

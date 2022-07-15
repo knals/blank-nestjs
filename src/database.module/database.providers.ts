@@ -1,6 +1,4 @@
-
 import { ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 
 export const MYSQL_LOCALHOST_DATA_SOURCE = 'MYSQL_LOCALHOST_DATA_SOURCE';
@@ -18,13 +16,11 @@ export const databaseProviders = [
         username: configService.get<string>('db.mysql.username'),
         password: configService.get<string>('db.mysql.password'),
         database: configService.get<string>('db.mysql.database'),
-        entities: [
-          __dirname + '/../**/mysql/*.entity{.ts,.js}'
-        ], 
-        synchronize: true
+        entities: [__dirname + '/../**/mysql/*.entity{.ts,.js}'],
+        synchronize: true,
       });
       return dataSource.initialize();
-    }
+    },
   },
   {
     provide: MONGO_LOCALHOST_DATA_SOURCE,
@@ -37,13 +33,13 @@ export const databaseProviders = [
         username: configService.get<string>('db.mongo.username'),
         // password: 'my-secret-pw',
         database: configService.get<string>('db.mongo.database'),
-        entities: [
-          __dirname + '/../**/mongo/*.document{.ts,.js}'
-        ], 
+        entities: [__dirname + '/../**/mongo/*.document{.ts,.js}'],
         synchronize: configService.get<boolean>('db.mongo.synchronize'),
-        useUnifiedTopology: configService.get<boolean>('db.mongo.useUnifiedTopology')
+        useUnifiedTopology: configService.get<boolean>(
+          'db.mongo.useUnifiedTopology',
+        ),
       });
       return dataSource.initialize();
-    }
-  }
+    },
+  },
 ];

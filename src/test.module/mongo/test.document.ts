@@ -2,7 +2,7 @@ import { Entity, Column, ObjectIdColumn, ObjectID } from 'typeorm';
 
 @Entity()
 export class TestCollection {
-  @ObjectIdColumn ()
+  @ObjectIdColumn()
   id: ObjectID;
 
   @Column()
