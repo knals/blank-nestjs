@@ -24,12 +24,39 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The reason for this repository is learning about NestJs.
+
+
+docker pull mongo
+
+## Prerequisites
+
+```bash
+# Nest Cli
+npm i -g @nestjs/cli
+
+# MYSQL (I suggest using docker for simplicity)
+docker pull mysql
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+# MongoDB (I suggest using docker for simplicity)
+docker pull mongo
+docker run --name some-mongo -d mongo:tag
+
+# Keycloak (I suggest using docker for simplicity)
+docker pull jboss/keycloak
+docker run -p 8080:8080 jboss/keycloak
+
+```
 
 ## Installation
 
 ```bash
+# install dependencies
 $ npm install
+
+# production enviroment properties
+NODE_ENV = 'PROD'
 ```
 
 ## Running the app
