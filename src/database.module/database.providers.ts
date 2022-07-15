@@ -1,7 +1,6 @@
 
+import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TestCollection } from 'src/test.module/mongo/test.document';
-import { Test } from 'src/test.module/mysql/test.entity';
 import { DataSource } from 'typeorm';
 
 export const MYSQL_LOCALHOST_DATA_SOURCE = 'MYSQL_LOCALHOST_DATA_SOURCE';
@@ -10,14 +9,15 @@ export const MONGO_LOCALHOST_DATA_SOURCE = 'MONGO_LOCALHOST_DATA_SOURCE';
 export const databaseProviders = [
   {
     provide: MYSQL_LOCALHOST_DATA_SOURCE,
-    useFactory: async () => {
+    inject: [ConfigService],
+    useFactory: async (configService: ConfigService) => {
       const dataSource = new DataSource({
         type: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: 'my-secret-pw',
-        database: 'test',
+        host: configService.get<string>('db.mysql.host'),
+        port: configService.get<number>('db.mysql.port'),
+        username: configService.get<string>('db.mysql.username'),
+        password: configService.get<string>('db.mysql.password'),
+        database: configService.get<string>('db.mysql.database'),
         entities: [
           __dirname + '/../**/mysql/*.entity{.ts,.js}'
         ], 
@@ -28,22 +28,22 @@ export const databaseProviders = [
   },
   {
     provide: MONGO_LOCALHOST_DATA_SOURCE,
-    useFactory: async () => {
+    inject: [ConfigService],
+    useFactory: async (configService: ConfigService) => {
       const dataSource = new DataSource({
         type: 'mongodb',
-        host: 'localhost',
-        port: 27017,
-        username: 'root',
+        host: configService.get<string>('db.mongo.host'),
+        port: configService.get<number>('db.mongo.port'),
+        username: configService.get<string>('db.mongo.username'),
         // password: 'my-secret-pw',
-        database: 'test',
+        database: configService.get<string>('db.mongo.database'),
         entities: [
           __dirname + '/../**/mongo/*.document{.ts,.js}'
         ], 
-        synchronize: true,
-        useUnifiedTopology: true
+        synchronize: configService.get<boolean>('db.mongo.synchronize'),
+        useUnifiedTopology: configService.get<boolean>('db.mongo.useUnifiedTopology')
       });
       return dataSource.initialize();
     }
   }
 ];
-

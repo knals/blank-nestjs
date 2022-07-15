@@ -10,11 +10,11 @@ import { TestModule } from './test.module/test.module';
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
-      isGlobal: true 
-    }),    
-    TestModule
+      isGlobal: true,
+    }),
+    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
-})
+}) 
 export class AppModule {}

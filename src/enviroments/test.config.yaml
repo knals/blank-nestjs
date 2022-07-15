@@ -1,14 +1,21 @@
 http:
   host: 'localhost'
-  port: 8080
+  port: 3000
 
 db:
-  postgres:
-    url: 'localhost'
-    port: 5432
-    database: 'yaml-db'
-
-  sqlite:
-    database: 'sqlite.db'
-
-GREETING_MSG: DEVELOPMENT Greetings from NestJS Configuration
+  mysql:
+    type: 'mysql'
+    host: 'localhost'
+    port: 3306
+    username: 'root'
+    password: 'my-secret-pw'
+    database: 'test'
+    synchronize: true
+  mongo:
+    type: 'mongodb'
+    host: 'localhost'
+    port: 27017
+    username: 'root'
+    database: 'test'
+    synchronize: true
+    useUnifiedTopology: true
