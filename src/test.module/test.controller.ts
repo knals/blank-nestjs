@@ -13,19 +13,19 @@ export class TestController {
   ) {}
 
   @Get('/all-test')
-  @Roles({ roles: ['user'] })
+  @Roles({ roles: ['USER'] })
   getAllTest(): Promise<Test[]> {
     return this.testService.findAllTest();
   }
 
   @Get('all-test-collection')
-  @Roles({ roles: ['user'] })
+  @Roles({ roles: ['USER'] })
   getAllTestCollection(): Promise<TestCollection[]> {
     return this.testService.findAllTestCollection();
   }
 
   @Get('enviroment')
-  @Roles({ roles: ['admin'] })
+  @Roles({ roles: ['ADMIN'] })
   getEnviromentProperty(): string {
     console.log(this.configService);
     console.log(`${process.env.NODE_ENV}`);
@@ -34,13 +34,13 @@ export class TestController {
   }
 
   @Post('/save/test')
-  @Roles({ roles: ['admin'] })
+  @Roles({ roles: ['ADMIN'] })
   saveTest(@Body() test: Test): Promise<Test> {
     return this.testService.saveTestItem(test);
   }
 
   @Post('/save/test-collection')
-  @Roles({ roles: ['admin'] })
+  @Roles({ roles: ['ADMIN'] })
   saveTestCollection(
     @Body() testCollection: TestCollection,
   ): Promise<TestCollection> {

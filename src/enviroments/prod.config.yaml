@@ -14,11 +14,16 @@ db:
   mysql:
     type: 'mysql'
     host: 'localhost'
-    port: 8080
+    port: 3306
     #username: 'root'
     username: 'root'
     #password: 'my-secret-pw'
     password: 'example'
     database: 'test'
     synchronize: true
+keycloak:
+  authServerUrl: 'http://localhost'
+  realm: 'master'
+  clientId: 'blank-nestjs'
+  secret: '0YTxRYqMPVi0cBRtizkeRUSBipoS08JB'
 

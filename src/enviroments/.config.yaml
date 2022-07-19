@@ -22,8 +22,8 @@ db:
     database: 'test'
     synchronize: true
 keycloak:
-  authServerUrl: 'http://localhost:80/auth'
-  realm: 'Master'
-  clientId: 'Blank-nestjs'
-  secret: 'NyPuoveHdW38n87AdDTWPGjWPwaL9n4Q'
+  authServerUrl: 'http://localhost'
+  realm: 'master'
+  clientId: 'blank-nestjs'
+  secret: '0YTxRYqMPVi0cBRtizkeRUSBipoS08JB'
 

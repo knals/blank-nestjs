@@ -12,15 +12,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { TestModule } from './test.module/test.module';
+import { KeycloakConfigService } from './keycloak.module/keycloak.config.service';
+import { KeycloakModule } from './keycloak.module/keycloak.module';
 
 @Module({
   imports: [
-    KeycloakConnectModule.register({
-      authServerUrl: 'http://localhost:80/auth',
-      realm: 'Master',
-      clientId: 'Blank-nestjs',
-      secret: 'NyPuoveHdW38n87AdDTWPGjWPwaL9n4Q',
-      // Secret key of the client taken from keycloak server
+    KeycloakConnectModule.registerAsync({
+      useExisting: KeycloakConfigService,
+      imports: [KeycloakModule],
     }),
     ConfigModule.forRoot({
       load: [configuration],
@@ -35,19 +34,10 @@ import { TestModule } from './test.module/test.module';
       provide: APP_GUARD,
       useClass: AuthGuard,
     },
-    // This adds a global level resource guard, which is permissive.
-    // Only controllers annotated with @Resource and
-    // methods with @Scopes
-    // are handled by this guard.
     {
       provide: APP_GUARD,
       useClass: ResourceGuard,
     },
-    // New in 1.1.0
-    // This adds a global level role guard, which is permissive.
-    // Used by `@Roles` decorator with the
-    // optional `@AllowAnyRole` decorator for allowing any
-    // specified role passed.
     {
       provide: APP_GUARD,
       useClass: RoleGuard,

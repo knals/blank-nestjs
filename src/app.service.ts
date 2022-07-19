@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { Roles } from 'nest-keycloak-connect';
+import { Get, Injectable } from '@nestjs/common';
+import { Resource, Roles } from 'nest-keycloak-connect';
 
+@Resource(AppService.name)
 @Injectable()
 export class AppService {
-  @Roles({ roles: ['user'] })
   getHello(): string {
     return 'Hello World!';
   }
