@@ -9,6 +9,7 @@ export class AppController {
   @Get()
   @Roles({ roles: ['USER'], mode: RoleMatchingMode.ALL })
   getHello(): string {
+    this.appService.example();
     return this.appService.getHello();
   }
 }

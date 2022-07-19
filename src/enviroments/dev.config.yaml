@@ -26,4 +26,9 @@ keycloak:
   realm: 'master'
   clientId: 'blank-nestjs'
   secret: '0YTxRYqMPVi0cBRtizkeRUSBipoS08JB'
-
+mail:
+  host: 'smtp.example.com'
+  user: ''
+  password: ''
+  from: ''
+  mailTransport: ''
