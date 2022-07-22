@@ -1,0 +1,7 @@
+# SOURCE -> https://www.tomray.dev/nestjs-docker-production
+
+docker build -t nest-cloud-run .
+
+docker images
+
+docker run -p81:3001 nest-cloud-run

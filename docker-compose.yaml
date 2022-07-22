@@ -23,6 +23,8 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - 'mysql_data:/mysql'
 
   adminer:
     image: adminer
@@ -84,6 +86,8 @@ volumes:
   oracle_data:
     driver: local
   postgresql_data:
+    driver: local
+  mysql_data:
     driver: local
 
 
