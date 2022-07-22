@@ -24,6 +24,22 @@ db:
 keycloak:
   authServerUrl: 'http://localhost'
   realm: 'master'
-  clientId: 'blank-nestjs'
-  secret: '0YTxRYqMPVi0cBRtizkeRUSBipoS08JB'
+  clientId: 'Blank-nestjs'
+  secret: 'ha9f7HGcztgCjwGdB54tN8IJhjRsFIzH'
+mail:
+  host: 'smtp.gmail.com'
+  port: 465
+  user: ''
+  password: ''
+  from: ''
+  mailTransport: ''
 
+
+
+#MAIL_HOST=
+#MAIL_USER=user@example.com
+#MAIL_PASSWORD=topsecret
+#MAIL_FROM=noreply@example.com
+
+# optional
+#MAIL_TRANSPORT=smtp://${MAIL_USER}:${MAIL_PASSWORD}@${MAIL_HOST}
