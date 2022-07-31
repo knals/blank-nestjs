@@ -36,6 +36,14 @@ export class TestController {
   @Post('/save/test')
   @Roles({ roles: ['ADMIN'] })
   saveTest(@Body() test: Test): Promise<Test> {
+    test = {
+      id: 111,
+      name: 'hola2',
+      description: 'hola2 descripcion',
+      filename: 'filename2.jpg',
+      views: 2,
+      isPublished: true,
+    };
     return this.testService.saveTestItem(test);
   }
 

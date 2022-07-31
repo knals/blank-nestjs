@@ -26,7 +26,7 @@ import { MailModule } from './mail.module/mail.module';
       isGlobal: true,
     }),
     TestModule,
-    MailModule
+    MailModule,
   ],
   controllers: [AppController],
   providers: [
