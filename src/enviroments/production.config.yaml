@@ -1,10 +1,10 @@
 http:
-  host: 'localhost'
-  port: 3000
+  host: '192.168.1.139'
+  port: 81
 db:
   mongo:
     type: 'mongodb'
-    host: 'localhost'
+    host: '192.168.1.139'
     port: 27017
     username: 'root'
     password: 'example'
@@ -13,7 +13,7 @@ db:
     useUnifiedTopology: true
   mysql:
     type: 'mysql'
-    host: 'localhost'
+    host: '192.168.1.139'
     port: 3306
     #username: 'root'
     username: 'root'
@@ -22,9 +22,9 @@ db:
     database: 'test'
     synchronize: true
 keycloak:
-  authServerUrl: 'http://localhost/'
+  authServerUrl: 'http://192.168.1.139/'
   realm: 'master'
-  clientId: 'Blank-nestjs'
+  clientId: 'blank-nestjs'
   secret: '0YTxRYqMPVi0cBRtizkeRUSBipoS08JB'
 mail:
   host: 'smtp.example.com'

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import {
   AuthGuard,
   KeycloakConnectModule,
@@ -14,6 +14,7 @@ import { TestModule } from './test.module/test.module';
 import { KeycloakConfigService } from './keycloak.module/keycloak.config.service';
 import { KeycloakModule } from './keycloak.module/keycloak.module';
 import { MailModule } from './mail.module/mail.module';
+import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 
 @Module({
   imports: [
@@ -42,6 +43,10 @@ import { MailModule } from './mail.module/mail.module';
     {
       provide: APP_GUARD,
       useClass: RoleGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ErrorsInterceptor,
     },
   ],
 })
