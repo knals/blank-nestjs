@@ -15,6 +15,7 @@ import { KeycloakConfigService } from './keycloak.module/keycloak.config.service
 import { KeycloakModule } from './keycloak.module/keycloak.module';
 import { MailModule } from './mail.module/mail.module';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
+import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 
 @Module({
   imports: [
@@ -47,6 +48,10 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
     {
       provide: APP_INTERCEPTOR,
       useClass: ErrorsInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TimeoutInterceptor,
     },
   ],
 })
